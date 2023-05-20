@@ -6,6 +6,7 @@ rule all:
 
 rule emapper:
      input: "{species}.fasta"
-     output: "{species}.emapper.hits",
-             "{species}.emapper.annotations"
-     shell: "emapper.py -i {input[0]} --itype proteins -m diamond --sensmode ultra-sensitive --pfam_realign realign --evalue 0.001 --go_evidence all --output {input[0]} --cpu 2"
+     output: "{species}.emapper.hits", "{species}.emapper.annotations"
+     log: "{species}.eggnog.log"
+     params: sp="{species}"
+     shell: "(emapper.py -i {input[0]} --itype proteins -m diamond --sensmode ultra-sensitive --pfam_realign realign --evalue 0.001 --go_evidence all --output {params.sp} --override --cpu 2) 2> {log}"
