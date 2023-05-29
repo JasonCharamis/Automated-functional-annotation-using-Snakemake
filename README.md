@@ -5,7 +5,7 @@ eggNOG-mapper is a modern tool for assigning functional annotation using ortholo
 
 To run:
 
-conda activate snakemake
+conda activate snakemake (directory with fasta files)
 
 snakemake --cores 8 --snakefile Snakefile
 
